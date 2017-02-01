@@ -1,4 +1,4 @@
-# Chrominary
+# Untab
 A simple chrome based extension to save (and then later open all at once) the URLs of currently opened tabs. Really helpful when you have opened lots of tabs while searching and would like to go over these or save these at once for future reference.
 
 # Loading the extension
