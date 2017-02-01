@@ -1,0 +1,54 @@
+<!doctype html>
+<html>
+	<head>
+	    <meta charset="utf-8">
+		<title>Chrominary</title>
+		
+		<!-- Scripts -->
+		<script src="js/jquery-2.0.3.min.js"></script>
+		<script src="js/bootstrap.min.js"></script>
+		
+		<!-- Cascading Style Sheets -->
+		<link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
+		<link href="css/custom.css" rel="stylesheet" media="screen">
+		
+		<script src="popup.js"></script>	
+	</head>
+	
+	<body id="app">
+		
+
+		<ul class="nav nav-tabs">
+		  <li class="active"><a id="return_home" data-toggle="tab" href="#home"><span class="glyphicon glyphicon-link"> </span> Untab </a></li>
+		  <li id="view_untabs" ><a data-toggle="tab" href="#menu1"> <span class="glyphicon glyphicon-heart"> </span> Untabbed </a></li>
+		<!--   <li id="view_history"><a data-toggle="tab" href="#menu2"><span class="glyphicon glyphicon-th-list"> </span> History</a></li> -->
+		  
+		</ul>
+
+		<div class="tab-content">
+		  <div id="home" class="tab-pane  active">
+		    <section id="home-section">
+		    	<input class="form-control" type="text"  id="search_query" placeholder="Type here...">
+				<br>
+		    	<button id="save_links" class="pull-right btn btn-warning"> Save </button>
+		    </section>
+		  </div>
+		  
+		  <div id="menu1" class="tab-pane ">
+		  	<section id="untabs-section">
+		  		<div id="untabbed_links"></div>
+		  	</section>
+		  </div>
+		</div>
+
+		<div class="footer" id="footerID">
+			<div>
+				<img src="img/icon48.png" width="20">
+				<span> Untab - 2017</span>
+			</div>
+			
+		</div>
+		
+		
+	</body>
+</html>
