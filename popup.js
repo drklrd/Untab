@@ -1,10 +1,20 @@
 var urls = [];
 
+
+var badgeCounter = (function counter(){
+	chrome.storage.local.get('links', (result) => {
+		document.getElementById("badge").innerHTML = result && result.links ? Object.keys(result.links).length  : 0;
+	});
+	return counter;
+})();
+
 var saveNewLink = (links) => {
 	chrome.storage.local.set({
 		'links': links
 	})
 }
+
+
 
 var saveLinks = (tag, urls) => {
 
@@ -23,6 +33,7 @@ var saveLinks = (tag, urls) => {
 		}
 
 		document.getElementById("response").innerHTML = "Successfully untabbed !";
+		badgeCounter();
 
 	})
 }
