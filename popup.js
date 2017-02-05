@@ -50,9 +50,10 @@ var opentabs = (urls) => {
 
 document.addEventListener('DOMContentLoaded', () => {
 
+	document.getElementById('search_query').focus();
 	
+	function invokeUntab(){
 
-	document.getElementById('save_links').addEventListener('click', () => {
 		chrome.windows.getAll({
 			populate: true
 		}, function(windows) {
@@ -63,6 +64,13 @@ document.addEventListener('DOMContentLoaded', () => {
 			});
 		});
 		saveLinks(document.getElementById('search_query').value, urls);
+
+	}
+
+	document.getElementById('save_links').addEventListener('click', () => {
+
+		invokeUntab();
+		
 	});
 
 
@@ -91,5 +99,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
 		})
 	});
+
+
+	document.getElementsByName('searchForm')[0].onsubmit = function(evt) {
+		evt.preventDefault();
+		invokeUntab();
+	}
 
 });
