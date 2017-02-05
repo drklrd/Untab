@@ -19,8 +19,10 @@
 		
 
 		<ul class="nav nav-tabs">
-		  <li class="active"><a id="return_home" data-toggle="tab" href="#home"><span class="glyphicon glyphicon-link"> </span> Untab </a></li>
-		  <li id="view_untabs" ><a data-toggle="tab" href="#menu1"> <span class="glyphicon glyphicon-heart"> </span> Untabbed </a></li>
+		  <li class="active"><a id="return_home" data-toggle="tab" href="#home"><span class="glyphicon glyphicon-file"> </span> Untab </a></li>
+		  <li id="view_untabs" ><a data-toggle="tab" href="#menu1"> <span class="glyphicon glyphicon-link"> </span> Untabbed
+		  	<span class="badge" ><div id="badge" /></span>	 
+		  </a></li>
 		<!--   <li id="view_history"><a data-toggle="tab" href="#menu2"><span class="glyphicon glyphicon-th-list"> </span> History</a></li> -->
 		  
 		</ul>
@@ -28,9 +30,10 @@
 		<div class="tab-content">
 		  <div id="home" class="tab-pane  active">
 		    <section id="home-section">
-		    	<input class="form-control" type="text"  id="search_query" placeholder="Type here...">
+		    	<input class="form-control" type="text"  id="search_query" placeholder="Add tag">
 				<br>
 		    	<button id="save_links" class="pull-right btn btn-warning"> Save </button>
+		    	<div id="response"></div>
 		    </section>
 		  </div>
 		  

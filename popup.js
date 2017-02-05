@@ -9,6 +9,7 @@ var saveNewLink = (links) => {
 var saveLinks = (tag, urls) => {
 
 	chrome.storage.local.get('links', (result) => {
+
 		if (result && result.links) {
 			var obj = {};
 			obj[tag] = urls;
@@ -20,6 +21,8 @@ var saveLinks = (tag, urls) => {
 			links[tag] = urls;
 			saveNewLink(links);
 		}
+
+		document.getElementById("response").innerHTML = "Successfully untabbed !";
 
 	})
 }
@@ -36,17 +39,18 @@ var opentabs = (urls) => {
 
 document.addEventListener('DOMContentLoaded', () => {
 
-	chrome.windows.getAll({
-		populate: true
-	}, function(windows) {
-		windows.forEach(function(window) {
-			window.tabs.forEach(function(tab) {
-				urls.push(tab.url);
-			});
-		});
-	});
+	
 
 	document.getElementById('save_links').addEventListener('click', () => {
+		chrome.windows.getAll({
+			populate: true
+		}, function(windows) {
+			windows.forEach(function(window) {
+				window.tabs.forEach(function(tab) {
+					urls.push(tab.url);
+				});
+			});
+		});
 		saveLinks(document.getElementById('search_query').value, urls);
 	});
 
@@ -56,9 +60,10 @@ document.addEventListener('DOMContentLoaded', () => {
 		chrome.storage.local.get('links', (result) => {
 
 			if (result && result.links) {
+				var html = "";
 				for (var link in result.links) {
-					var html = link + "<br>";
-					html = html + "<div class='pull-right'> <button class='btn btn-warning' id='untab_id" + link + "' > Untab </button> </div>";
+					html = html + "<div class='row untab'>" +   link ;
+					html = html + "<div class='pull-right'> <button class='btn btn-warning' id='untab_id" + link + "' > Untab </button> </div>  </div>";
 					document.getElementById("untabbed_links").innerHTML = html;
 					document.getElementById('untab_id' + link).addEventListener('click', () => {
 						opentabs(result.links[link]);
