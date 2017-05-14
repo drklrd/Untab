@@ -115,7 +115,6 @@ document.addEventListener('DOMContentLoaded', () => {
 	}
 
 	document.getElementById('export').addEventListener('click', () => {
-
 		chrome.storage.local.get('links', (result) => {
 			if (result && result.links) {
 				var exportObj = result;
@@ -123,8 +122,13 @@ document.addEventListener('DOMContentLoaded', () => {
 			} else {
 				alert('No founn')
 			}
-		})
+		});
+	});
 
+	document.getElementById('import').addEventListener('click', () => {
+		chrome.tabs.create({
+			url: "import.html"
+		});
 	});
 
 });

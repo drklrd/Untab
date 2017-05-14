@@ -1,0 +1,50 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Untab</title>
+		
+		<!-- Scripts -->
+		<script src="js/jquery-2.0.3.min.js"></script>
+		<script src="js/bootstrap.min.js"></script>
+		
+		<!-- Cascading Style Sheets -->
+		<link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
+		<link href="css/custom.css" rel="stylesheet" media="screen">
+		
+		<script src="import.js"></script>	
+	</head>
+	
+	<body id="import" class="col-xs-12">
+		
+
+		<div class="alert alert-info">
+		  <strong>Select JSON file to import. </strong> 
+		</div>
+
+		<div class="import-message alert alert-success" id="success_message">
+		  <strong>Success !</strong> This file has been successfully imported. You can close this tab now.
+		</div>
+
+		<div class="import-message alert alert-danger" id="error_message">
+		  <strong>Failure !</strong> There was problem parsing the file. The file must be a valid JSON file in the format : 
+		  
+		  <pre>
+
+		  			"links": {
+		  				"test": [
+		  					"http://www.link1.com",
+		  					"http://www.link2.com",
+		  				]
+		  			}
+		  		}
+		  		
+
+		  </pre>
+
+		</div>
+
+		<input type="file" placeholder="Select File to Import" id="importfile"/>
+		
+	</body>
+</html>
