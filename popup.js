@@ -75,7 +75,13 @@ document.addEventListener('DOMContentLoaded', () => {
 	}
 
 	document.getElementById('save_links').addEventListener('click', () => {
-		invokeUntab();
+		var tagValue = document.getElementById('search_query').value;
+		if(tagValue && tagValue.length){
+			invokeUntab();	
+		}else{
+			document.getElementById("response").innerHTML = "Must specify tag";
+		}
+		
 	});
 
 	document.getElementById('view_untabs').addEventListener('click', () => {
