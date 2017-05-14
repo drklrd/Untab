@@ -36,3 +36,10 @@ section { padding: 5px;}
 .import-message{
 	display: none;
 }
+
+.pull-center{
+	text-align: center;
+	padding: 9px;
+	font-weight: bold;
+	font-size: 20px;
+}
