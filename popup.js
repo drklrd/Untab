@@ -91,7 +91,7 @@ document.addEventListener('DOMContentLoaded', () => {
 				var html = "";
 				for (var link in result.links) {
 					html = html + "<div class='row untab'>" + link;
-					html = html + "<div class='pull-right'> <button class='btn btn-warning' id='untab_id" + link + "' > Untab </button> </div>  </div>";
+					html = html + "<div class='pull-right'> <button class='btn btn-success' id='untab_id" + link + "' > Untab </button>  <button class='btn btn-warning' > <span class='glyphicon glyphicon-edit'> </span> </button>  <button class='btn btn-danger' > <span class='glyphicon glyphicon-remove'> </span> </button>  </div>  </div>";
 					document.getElementById("untabbed_links").innerHTML = html;
 					document.getElementById('untab_id' + link).addEventListener('click', () => {
 						opentabs(result.links[link]);
