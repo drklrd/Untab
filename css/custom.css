@@ -29,11 +29,11 @@ section { padding: 5px;}
 }
 
 #response{
-	color : #16a085 ;
+	/*color : #16a085 ;*/
 	font-weight: bold;
 }
 
-.import-message,.export-info{
+.import-message,.export-info,.response-info{
 	display: none;
 }
 

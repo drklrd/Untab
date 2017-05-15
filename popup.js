@@ -22,6 +22,7 @@ function alreadyExists(links, tag) {
 var saveLinks = (tag, urls) => {
 
 	chrome.storage.local.get('links', (result) => {
+		$('.response-info').css('display','block');
 		if (result && result.links) {
 			if (!alreadyExists(result.links, tag)) {
 				var obj = {};
@@ -29,16 +30,20 @@ var saveLinks = (tag, urls) => {
 				var links = Object.assign(result.links, obj);
 				saveNewLink(links);
 			} else {
-				document.getElementById("response").innerHTML = "This tag has already been used !";
+				$('.response-info').addClass('alert-danger');
+				$('#response').html("This tag has already been used !");
+				// document.getElementById("response").innerHTML = "This tag has already been used !";
 				return;
 			}
-		} else {
+		}else{
 			var links = {};
 			links[tag] = urls;
 			saveNewLink(links);
 			console.log('saveve', links)
 		}
-		document.getElementById("response").innerHTML = "Successfully untabbed !";
+		$('.response-info').addClass('alert-success');
+		$('#response').html("Successfully untabbed !");
+		// document.getElementById("response").innerHTML = "Successfully untabbed !";
 		document.getElementById('search_query').value = "";
 		badgeCounter();
 
@@ -75,11 +80,17 @@ document.addEventListener('DOMContentLoaded', () => {
 	}
 
 	document.getElementById('save_links').addEventListener('click', () => {
+
+		$('.response-info').removeClass('alert-danger');
+		$('.response-info').removeClass('alert-success');
 		var tagValue = document.getElementById('search_query').value;
 		if (tagValue && tagValue.length) {
 			invokeUntab();
 		} else {
-			document.getElementById("response").innerHTML = "Must specify tag";
+			$('.response-info').css('display','block');
+			$('.response-info').addClass('alert-danger');
+			$('#response').html("Must specify tag");
+			// document.getElementById("response").innerHTML = "Must specify tag";
 		}
 
 	});
@@ -139,7 +150,7 @@ document.addEventListener('DOMContentLoaded', () => {
 				var exportObj = result;
 				var fileName = new Date().getTime();
 				downloadJsonObj(exportObj,fileName);
-				$('.export-info').addClass('alert-info');
+				$('.export-info').addClass('alert-success');
 				$('#export_info_text').html ("File Successfully exported as "+fileName+".json");
 			} else {
 				$('.export-info').addClass('alert-danger');
