@@ -76,28 +76,34 @@ document.addEventListener('DOMContentLoaded', () => {
 
 	document.getElementById('save_links').addEventListener('click', () => {
 		var tagValue = document.getElementById('search_query').value;
-		if(tagValue && tagValue.length){
-			invokeUntab();	
-		}else{
+		if (tagValue && tagValue.length) {
+			invokeUntab();
+		} else {
 			document.getElementById("response").innerHTML = "Must specify tag";
 		}
-		
+
 	});
 
 	document.getElementById('view_untabs').addEventListener('click', () => {
-
 		chrome.storage.local.get('links', (result) => {
-			if (result && result.links) {
+			if (result && result.links && Object.keys(result.links).length) {
 				var html = "";
 				for (var link in result.links) {
-					html = html + "<div class='row untab'>" + link;
-					html = html + "<div class='pull-right'> <button class='btn btn-success' id='untab_id" + link + "' > Untab </button>  <button class='btn btn-warning' > <span class='glyphicon glyphicon-edit'> </span> </button>  <button class='btn btn-danger' > <span class='glyphicon glyphicon-remove'> </span> </button>  </div>  </div>";
-					document.getElementById("untabbed_links").innerHTML = html;
+					html = html + "<div id='tablayer_id" + link + "' class='row untab'>" + link;
+					html = html + "<div class='pull-right' > <button class='btn btn-success' id='untab_id" + link + "' > Untab </button>  <button class='btn btn-warning' > <span class='glyphicon glyphicon-edit'> </span> </button>  <button class='btn btn-danger' id='delete_id" + link + "' > <span class='glyphicon glyphicon-remove'> </span> </button>  </div>  </div>";
+
+				}
+				document.getElementById("untabbed_links").innerHTML = html;
+				for (let link in result.links) {
 					document.getElementById('untab_id' + link).addEventListener('click', () => {
 						opentabs(result.links[link]);
 					});
+					document.getElementById('delete_id' + link).addEventListener('click', () => {
+						$("#tablayer_id" + link).css('display', 'none');
+						delete result.links[link];
+						updateUntabs(result.links);
+					});
 				}
-
 			} else {
 				document.getElementById("untabbed_links").innerHTML = "No untab(s) found";
 			}
@@ -105,9 +111,15 @@ document.addEventListener('DOMContentLoaded', () => {
 		})
 	});
 
-
 	document.getElementsByName('searchForm')[0].onsubmit = function(evt) {
 		evt.preventDefault();
+	}
+
+	function updateUntabs(untabs) {
+		chrome.storage.local.set({
+			'links': untabs
+		});
+		badgeCounter();
 	}
 
 	function downloadJsonObj(obj) {
