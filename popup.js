@@ -96,7 +96,7 @@ document.addEventListener('DOMContentLoaded', () => {
 		} else {
 			flashBanner('.response-info');
 			$('.response-info').addClass('alert-danger');
-			$('#response').html("<span class='glyphicon glyphicon-info-sign'></span> Must specify tag");
+			$('#response').html("<span class='glyphicon glyphicon-info-sign'></span> You must specify a tag !");
 			// document.getElementById("response").innerHTML = "Must specify tag";
 		}
 
