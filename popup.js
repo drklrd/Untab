@@ -31,7 +31,7 @@ var saveLinks = (tag, urls) => {
 				saveNewLink(links);
 			} else {
 				$('.response-info').addClass('alert-danger');
-				$('#response').html("This tag has already been used !");
+				$('#response').html("<span class='glyphicon glyphicon-info-sign'></span> This tag has already been used !");
 				// document.getElementById("response").innerHTML = "This tag has already been used !";
 				return;
 			}
@@ -42,7 +42,7 @@ var saveLinks = (tag, urls) => {
 			console.log('saveve', links)
 		}
 		$('.response-info').addClass('alert-success');
-		$('#response').html("Successfully untabbed !");
+		$('#response').html("<span class='glyphicon glyphicon-ok-sign'></span> Successfully untabbed !");
 		// document.getElementById("response").innerHTML = "Successfully untabbed !";
 		document.getElementById('search_query').value = "";
 		badgeCounter();
@@ -89,7 +89,7 @@ document.addEventListener('DOMContentLoaded', () => {
 		} else {
 			$('.response-info').css('display','block');
 			$('.response-info').addClass('alert-danger');
-			$('#response').html("Must specify tag");
+			$('#response').html("<span class='glyphicon glyphicon-info-sign'></span> Must specify tag");
 			// document.getElementById("response").innerHTML = "Must specify tag";
 		}
 
@@ -116,7 +116,13 @@ document.addEventListener('DOMContentLoaded', () => {
 					});
 				}
 			} else {
-				document.getElementById("untabbed_links").innerHTML = "No untab(s) found";
+				document.getElementById("untabbed_links").innerHTML = '\
+						<div class="row">\
+				  			<div class="alert alert-danger">\
+				  				<span class="glyphicon glyphicon-info-sign"> </span>  \
+				  			  	<strong> No Untab(s) found. Well, its time you add some. </strong> \
+				  			</div>\
+				  		</div>';
 			}
 
 		})
@@ -151,10 +157,10 @@ document.addEventListener('DOMContentLoaded', () => {
 				var fileName = new Date().getTime();
 				downloadJsonObj(exportObj,fileName);
 				$('.export-info').addClass('alert-success');
-				$('#export_info_text').html ("File Successfully exported as "+fileName+".json");
+				$('#export_info_text').html ("<span class='glyphicon glyphicon-ok-sign'></span> File Successfully exported as "+fileName+".json");
 			} else {
 				$('.export-info').addClass('alert-danger');
-				$('#export_info_text').html ("No Untab links to export");
+				$('#export_info_text').html("<span class='glyphicon glyphicon-info-sign'></span> No Untab links to export");
 			}
 		});
 	});
