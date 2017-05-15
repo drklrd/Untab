@@ -1,5 +1,5 @@
 var urls = [];
-
+var flashRate = 1500;
 
 var badgeCounter = (function counter() {
 	chrome.storage.local.get('links', (result) => {
@@ -19,10 +19,17 @@ function alreadyExists(links, tag) {
 
 }
 
+function flashBanner(className){
+	$(className).css('display','block');
+	setTimeout(function(){
+		$(className).css('display','none');
+	},flashRate);
+}
+
 var saveLinks = (tag, urls) => {
 
 	chrome.storage.local.get('links', (result) => {
-		$('.response-info').css('display','block');
+		flashBanner('.response-info');
 		if (result && result.links) {
 			if (!alreadyExists(result.links, tag)) {
 				var obj = {};
@@ -87,7 +94,7 @@ document.addEventListener('DOMContentLoaded', () => {
 		if (tagValue && tagValue.length) {
 			invokeUntab();
 		} else {
-			$('.response-info').css('display','block');
+			flashBanner('.response-info');
 			$('.response-info').addClass('alert-danger');
 			$('#response').html("<span class='glyphicon glyphicon-info-sign'></span> Must specify tag");
 			// document.getElementById("response").innerHTML = "Must specify tag";
@@ -137,6 +144,15 @@ document.addEventListener('DOMContentLoaded', () => {
 			'links': untabs
 		});
 		badgeCounter();
+		if(!Object.keys(untabs).length){
+			document.getElementById("untabbed_links").innerHTML = '\
+					<div class="row">\
+			  			<div class="alert alert-danger">\
+			  				<span class="glyphicon glyphicon-info-sign"> </span>  \
+			  			  	<strong> No Untab(s) found. Well, its time you add some. </strong> \
+			  			</div>\
+			  		</div>';
+		}
 	}
 
 	function downloadJsonObj(obj,fileName) {
@@ -150,8 +166,10 @@ document.addEventListener('DOMContentLoaded', () => {
 	}
 
 	document.getElementById('export').addEventListener('click', () => {
+		$('.export-info').removeClass('alert-danger');
+		$('.export-info').removeClass('alert-success');
 		chrome.storage.local.get('links', (result) => {
-			$('.export-info').css('display','block');
+			flashBanner('.export-info');
 			if (result && result.links && Object.keys(result.links).length) {
 				var exportObj = result;
 				var fileName = new Date().getTime();
