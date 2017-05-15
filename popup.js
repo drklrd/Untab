@@ -122,23 +122,28 @@ document.addEventListener('DOMContentLoaded', () => {
 		badgeCounter();
 	}
 
-	function downloadJsonObj(obj) {
+	function downloadJsonObj(obj,fileName) {
 
 		var dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(obj));
 		var dlAnchorElem = document.createElement('a');
 		dlAnchorElem.setAttribute("href", dataStr);
-		dlAnchorElem.setAttribute("download", new Date().getTime() + ".json");
+		dlAnchorElem.setAttribute("download", fileName + ".json");
 		dlAnchorElem.click();
 
 	}
 
 	document.getElementById('export').addEventListener('click', () => {
 		chrome.storage.local.get('links', (result) => {
-			if (result && result.links) {
+			$('.export-info').css('display','block');
+			if (result && result.links && Object.keys(result.links).length) {
 				var exportObj = result;
-				downloadJsonObj(exportObj);
+				var fileName = new Date().getTime();
+				downloadJsonObj(exportObj,fileName);
+				$('.export-info').addClass('alert-info');
+				$('#export_info_text').html ("File Successfully exported as "+fileName+".json");
 			} else {
-				alert('No founn')
+				$('.export-info').addClass('alert-danger');
+				$('#export_info_text').html ("No Untab links to export");
 			}
 		});
 	});

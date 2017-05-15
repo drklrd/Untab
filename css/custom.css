@@ -33,7 +33,7 @@ section { padding: 5px;}
 	font-weight: bold;
 }
 
-.import-message{
+.import-message,.export-info{
 	display: none;
 }
 
