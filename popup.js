@@ -1,5 +1,5 @@
 var urls = [];
-var flashRate = 1500;
+var flashRate = 3000;
 
 var badgeCounter = (function counter() {
 	chrome.storage.local.get('links', (result) => {
@@ -20,9 +20,10 @@ function alreadyExists(links, tag) {
 }
 
 function flashBanner(className){
-	$(className).css('display','block');
+	// $(className).css('display','block');
+	$(className).show('fast');
 	setTimeout(function(){
-		$(className).css('display','none');
+		$(className).hide('fast');
 	},flashRate);
 }
 
