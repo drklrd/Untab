@@ -122,10 +122,18 @@ document.addEventListener('DOMContentLoaded', () => {
 								      <div class="panel-body">'+getIndividualUntabs(result.links,link)+'</div>\
 								    </div>\
 								  </div>\
-								</div>'
+								</div>';
 
 				}
+
 				document.getElementById("untabbed_links").innerHTML = html;
+				result.links[link].forEach(function(untab,index){
+					document.getElementById('eachuntab_' + index).addEventListener('click', () => {
+						$("#eachuntab_"+index).css('display', 'none');
+						result.links[link].splice(index,1);
+						updateUntabs(result.links);
+					});
+				});
 				for (let link in result.links) {
 					document.getElementById('untab_id' + link).addEventListener('click', () => {
 						opentabs(result.links[link]);
@@ -208,8 +216,15 @@ document.addEventListener('DOMContentLoaded', () => {
 		var listTemplate = "";
 		if(allTabs[link] && allTabs[link].length){
 			listTemplate = listTemplate + '<ul>';
-			allTabs[link].forEach(function(untab){
-				listTemplate = listTemplate + "<li class='truncate eachuntab'> <a href='"+untab+"' target='blank'>" + untab + "</a></li>";
+			allTabs[link].forEach(function(untab,index){
+				listTemplate = listTemplate + 
+					"<li class='truncate eachuntab' > \
+						<button class='btn btn-danger' id='eachuntab_"+index+"' > <span class='glyphicon glyphicon-remove'></span> </button> \
+						<a href='"+untab+"' target='blank'>" 
+							+ untab + 
+						"</a></li>";
+
+				
 			})
 			listTemplate = listTemplate + '</ul>';
 		}
