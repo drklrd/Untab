@@ -102,14 +102,27 @@ document.addEventListener('DOMContentLoaded', () => {
 		}
 
 	});
-
 	document.getElementById('view_untabs').addEventListener('click', () => {
 		chrome.storage.local.get('links', (result) => {
 			if (result && result.links && Object.keys(result.links).length) {
 				var html = "";
 				for (var link in result.links) {
-					html = html + "<div id='tablayer_id" + link + "' class='row untab'>" + link;
-					html = html + "<div class='pull-right' > <button class='btn btn-success' id='untab_id" + link + "' > Untab </button>  <button class='btn btn-warning' > <span class='glyphicon glyphicon-edit'> </span> </button>  <button class='btn btn-danger' id='delete_id" + link + "' > <span class='glyphicon glyphicon-remove'> </span> </button>  </div>  </div>";
+
+					html = html + 
+									'<div class="panel-group"> \
+									 <div class="panel panel-default">\
+									 <div class="panel-heading">\
+									 <h4 class="panel-title">'
+									  
+
+					html = html + "<div  id='tablayer_id" + link + "' class='row untab'>" + link;
+					html = html + "<div class='pull-right' > <button class='btn btn-success' id='untab_id" + link + "' > Untab </button>  <a data-toggle='collapse' href='#collapse1'> <button class='btn btn-warning' > <span class='glyphicon glyphicon-edit'> </span> </button> </a> <button class='btn btn-danger' id='delete_id" + link + "' > <span class='glyphicon glyphicon-remove'> </span> </button>  </div>  </div>";
+					html = html + '</h4></div>';
+					html = html + 	'<div id="collapse1" class="panel-collapse collapse">\
+								      <div class="panel-body">'+getIndividualUntabs(result.links,link)+'</div>\
+								    </div>\
+								  </div>\
+								</div>'
 
 				}
 				document.getElementById("untabbed_links").innerHTML = html;
@@ -189,5 +202,19 @@ document.addEventListener('DOMContentLoaded', () => {
 			url: "import.html"
 		});
 	});
+
+	function getIndividualUntabs(allTabs,link){
+
+		var listTemplate = "";
+		if(allTabs[link] && allTabs[link].length){
+			listTemplate = listTemplate + '<ul>';
+			allTabs[link].forEach(function(untab){
+				listTemplate = listTemplate + "<li class='truncate eachuntab'> <a href='"+untab+"' target='blank'>" + untab + "</a></li>";
+			})
+			listTemplate = listTemplate + '</ul>';
+		}
+		return listTemplate;
+
+	}
 
 });

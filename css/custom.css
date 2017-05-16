@@ -43,3 +43,15 @@ section { padding: 5px;}
 	font-weight: bold;
 	font-size: 20px;
 }
+
+.truncate {
+  /*width: 250px;*/
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.eachuntab{
+	cursor: pointer;
+	margin : 7px;
+}
