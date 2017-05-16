@@ -106,6 +106,7 @@ document.addEventListener('DOMContentLoaded', () => {
 		chrome.storage.local.get('links', (result) => {
 			if (result && result.links && Object.keys(result.links).length) {
 				var html = "";
+				var index = 0;
 				for (var link in result.links) {
 
 					html = html + 
@@ -116,13 +117,14 @@ document.addEventListener('DOMContentLoaded', () => {
 									  
 
 					html = html + "<div  id='tablayer_id" + link + "' class='row untab'>" + link;
-					html = html + "<div class='pull-right' > <button class='btn btn-success' id='untab_id" + link + "' > Untab </button>  <a data-toggle='collapse' href='#collapse1'> <button class='btn btn-warning' > <span class='glyphicon glyphicon-edit'> </span> </button> </a> <button class='btn btn-danger' id='delete_id" + link + "' > <span class='glyphicon glyphicon-remove'> </span> </button>  </div>  </div>";
+					html = html + "<div class='pull-right' > <button class='btn btn-success' id='untab_id" + link + "' > Untab </button>  <a data-toggle='collapse' href='#collapse"+index+"'> <button class='btn btn-warning' > <span class='glyphicon glyphicon-edit'> </span> </button> </a> <button class='btn btn-danger' id='delete_id" + link + "' > <span class='glyphicon glyphicon-remove'> </span> </button>  </div>  </div>";
 					html = html + '</h4></div>';
-					html = html + 	'<div id="collapse1" class="panel-collapse collapse">\
+					html = html + 	'<div id="collapse'+index+'" class="panel-collapse collapse">\
 								      <div class="panel-body">'+getIndividualUntabs(result.links,link)+'</div>\
 								    </div>\
 								  </div>\
 								</div>';
+					index++;
 
 				}
 
