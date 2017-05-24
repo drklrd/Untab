@@ -1,9 +1,18 @@
 # Untab
 A simple chrome based extension to save (and then later open all at once) the URLs of currently opened tabs. Really helpful when you have opened lots of tabs while searching and would like to go over these or save these at once for future reference.
 
+# Available Features
+
+* Save opened tabs under one tag.
+* View all of the saved tags.
+* View links inside each tag.
+* Option to open a single link from each tag.
+* Import tags from similar-type JSON file.
+* Export tags as JSON.
+
 # Loading the extension
 
-0. First clone or download the repo and extract(if downloaded as zip)
+0. First clone or download the repo and extract (if downloaded as zip)
 1. Go to chrome://extensions
 2. Enable the Developer mode
 3. Click Load unpacked extension
