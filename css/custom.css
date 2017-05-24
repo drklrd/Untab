@@ -55,3 +55,8 @@ section { padding: 5px;}
 	cursor: pointer;
 	margin : 7px;
 }
+
+.date-style{
+	font-size: 11px;
+	font-style: italic;
+}

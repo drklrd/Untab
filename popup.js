@@ -34,7 +34,10 @@ var saveLinks = (tag, urls) => {
 		if (result && result.links) {
 			if (!alreadyExists(result.links, tag)) {
 				var obj = {};
-				obj[tag] = urls;
+				obj[tag] = {
+					links : urls,
+					createdAt : new Date().getTime()
+				};
 				var links = Object.assign(result.links, obj);
 				saveNewLink(links);
 			} else {
@@ -45,7 +48,10 @@ var saveLinks = (tag, urls) => {
 			}
 		}else{
 			var links = {};
-			links[tag] = urls;
+			links[tag] = {
+					links : urls,
+					createdAt : new Date().getTime()
+			};
 			saveNewLink(links);
 			console.log('saveve', links)
 		}
@@ -116,7 +122,7 @@ document.addEventListener('DOMContentLoaded', () => {
 									 <h4 class="panel-title">'
 									  
 
-					html = html + "<div  id='tablayer_id" + link + "' class='row untab'>" + link;
+					html = html + "<div  id='tablayer_id" + link + "' class='row untab'>" + link + '<br>' + '<span class="date-style">' + 'untabbed ' + moment(result.links[link].createdAt).fromNow() + '<span>';
 					html = html + "<div class='pull-right' > <button class='btn btn-success' id='untab_id" + link + "' > Untab </button>  <a data-toggle='collapse' href='#collapse"+index+"'> <button class='btn btn-warning' > <span class='glyphicon glyphicon-eye-open'> </span> </button> </a> <button class='btn btn-danger' id='delete_id" + link + "' > <span class='glyphicon glyphicon-remove'> </span> </button>  </div>  </div>";
 					html = html + '</h4></div>';
 					html = html + 	'<div id="collapse'+index+'" class="panel-collapse collapse">\
@@ -129,7 +135,7 @@ document.addEventListener('DOMContentLoaded', () => {
 				}
 
 				document.getElementById("untabbed_links").innerHTML = html;
-				result.links[link].forEach(function(untab,index){
+				result.links[link].links.forEach(function(untab,index){
 					// document.getElementById('eachuntab_' + index).addEventListener('click', () => {
 					// 	$("#eachuntab_"+index).css('display', 'none');
 					// 	result.links[link].splice(index,1);
@@ -138,11 +144,11 @@ document.addEventListener('DOMContentLoaded', () => {
 				});
 				for (let link in result.links) {
 					document.getElementById('untab_id' + link).addEventListener('click', () => {
-						opentabs(result.links[link]);
+						opentabs(result.links[link].links);
 					});
 					document.getElementById('delete_id' + link).addEventListener('click', () => {
 						$("#tablayer_id" + link).css('display', 'none');
-						delete result.links[link];
+						delete result.links[link].links;
 						updateUntabs(result.links);
 					});
 				}
@@ -216,9 +222,9 @@ document.addEventListener('DOMContentLoaded', () => {
 	function getIndividualUntabs(allTabs,link){
 
 		var listTemplate = "";
-		if(allTabs[link] && allTabs[link].length){
+		if(allTabs[link] &&  allTabs[link].links && allTabs[link].links.length){
 			listTemplate = listTemplate + '<ul>';
-			allTabs[link].forEach(function(untab,index){
+			allTabs[link].links.forEach(function(untab,index){
 				// listTemplate = listTemplate + 
 				// 	"<li class='truncate eachuntab' > \
 				// 		<button class='btn btn-danger' id='eachuntab_"+index+"' > <span class='glyphicon glyphicon-remove'></span> </button> \
