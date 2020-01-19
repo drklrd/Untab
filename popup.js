@@ -78,6 +78,8 @@ var opentabs = (urls) => {
 
 document.addEventListener('DOMContentLoaded', () => {
 
+	document.getElementById("spanDate").innerHTML = new Date().getFullYear();
+
 	document.getElementById('search_query').focus();
 
 	function invokeUntab() {
@@ -115,12 +117,12 @@ document.addEventListener('DOMContentLoaded', () => {
 				var index = 0;
 				for (var link in result.links) {
 
-					html = html + 
+					html = html +
 									'<div class="panel-group"> \
 									 <div class="panel panel-default">\
 									 <div class="panel-heading">\
 									 <h4 class="panel-title">'
-									  
+
 
 					html = html + "<div  id='tablayer_id" + link + "' class='row untab'>" + link + '<br>' + '<span class="date-style">' + 'untabbed ' + moment(result.links[link].createdAt).fromNow() + '<span>';
 					html = html + "<div class='pull-right' > <button class='btn btn-success' id='untab_id" + link + "' > Untab </button>  <a data-toggle='collapse' href='#collapse"+index+"'> <button class='btn btn-warning' > <span class='glyphicon glyphicon-eye-open'> </span> </button> </a> <button class='btn btn-danger' id='delete_id" + link + "' > <span class='glyphicon glyphicon-remove'> </span> </button>  </div>  </div>";
@@ -225,19 +227,19 @@ document.addEventListener('DOMContentLoaded', () => {
 		if(allTabs[link] &&  allTabs[link].links && allTabs[link].links.length){
 			listTemplate = listTemplate + '<ul>';
 			allTabs[link].links.forEach(function(untab,index){
-				// listTemplate = listTemplate + 
+				// listTemplate = listTemplate +
 				// 	"<li class='truncate eachuntab' > \
 				// 		<button class='btn btn-danger' id='eachuntab_"+index+"' > <span class='glyphicon glyphicon-remove'></span> </button> \
-				// 		<a href='"+untab+"' target='blank'>" 
-				// 			+ untab + 
+				// 		<a href='"+untab+"' target='blank'>"
+				// 			+ untab +
 				// 		"</a></li>";
-				listTemplate = listTemplate + 
+				listTemplate = listTemplate +
 					"<li class='truncate eachuntab' > \
-						<a href='"+untab+"' target='blank'>" 
-							+ untab + 
+						<a href='"+untab+"' target='blank'>"
+							+ untab +
 						"</a></li>";
 
-				
+
 			})
 			listTemplate = listTemplate + '</ul>';
 		}

@@ -3,21 +3,21 @@
 	<head>
 		<meta charset="utf-8">
 		<title>Untab</title>
-		
+
 		<!-- Scripts -->
 		<script src="js/jquery-2.0.3.min.js"></script>
 		<script src="js/bootstrap.min.js"></script>
 		<script src="js/moment.min.js"></script>
-		
+
 		<!-- Cascading Style Sheets -->
 		<link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
 		<link href="css/custom.css" rel="stylesheet" media="screen">
-		
-		<script src="popup.js"></script>	
+
+		<script src="popup.js"></script>
 	</head>
-	
+
 	<body class="popup" id="app">
-		
+
 
 		<ul class="nav nav-tabs">
 		  <li class="active">
@@ -25,17 +25,17 @@
 		  </li>
 		  <li id="view_untabs" >
 			<a data-toggle="tab" href="#menu1"> <span class="glyphicon glyphicon-link"> </span> Untabbed
-				<span class="badge" ><span id="badge" /></span>	 
+				<span class="badge" ><span id="badge" /></span>
 			</a>
 		  </li>
 
 		  <li id="import_export">
 			<a data-toggle="tab" href="#importexport">
-				<span class="glyphicon glyphicon-save"> </span> Import / Export 
+				<span class="glyphicon glyphicon-save"> </span> Import / Export
 			</a>
 		  </li>
 		<!--   <li id="view_history"><a data-toggle="tab" href="#menu2"><span class="glyphicon glyphicon-th-list"> </span> History</a></li> -->
-		  
+
 		</ul>
 
 		<div class="tab-content">
@@ -47,7 +47,7 @@
 						<br>
 						<div class="row">
 							<div class="response-info alert">
-							  	<strong id="response"> </strong> 
+							  	<strong id="response"> </strong>
 							</div>
 						</div>
 						<button id="save_links" class="pull-right btn btn-primary"> Save </button>
@@ -57,7 +57,7 @@
 
 			</section>
 		  </div>
-		  
+
 		  <div id="menu1" class="tab-pane ">
 			<section id="untabs-section">
 				<div id="untabbed_links"></div>
@@ -70,18 +70,18 @@
 
 		  		<div class="row">
 		  			<div class="col-xs-6">
-		  				<button id="import" class=" form-control btn btn-info"> 
+		  				<button id="import" class=" form-control btn btn-info">
 							<span class="glyphicon glyphicon-import"> </span>
 		  					Import from a JSON file
 		  				</button>
 		  			</div>
 		  		</div>
-		  		
+
 		  		<br>
 
 		  		<div class="row">
 		  			<div class="col-xs-6">
-		  				<button id="export" class="form-control btn btn-info"> 
+		  				<button id="export" class="form-control btn btn-info">
 		  					<span class="glyphicon glyphicon-export"> </span>
 		  					Export as JSON file
 		  				</button>
@@ -92,15 +92,15 @@
 
 		  		<div class="row">
 		  			<div class="export-info alert">
-		  			  	<strong id="export_info_text"> </strong> 
+		  			  	<strong id="export_info_text"> </strong>
 		  			</div>
 		  		</div>
 
 		  		</div>
-		  		
+
 		  	</section>
 		  </div>
-		
+
 
 
 		</div>
@@ -108,11 +108,11 @@
 		<div class="footer" id="footerID">
 			<div>
 				<img src="img/icon48.png" width="20">
-				<span> Untab - 2017</span>
+				<span> Untab - </span> <span id="spanDate"></span>
 			</div>
-			
+
 		</div>
-		
-		
+
+
 	</body>
 </html>
