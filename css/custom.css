@@ -1,12 +1,12 @@
 /**
  * Chrome Extension Twitter Bootstrap 3 Template
  * Custom CSS
- *	
+ *
  */
 
 body, section {			/* Change width and height to own preferences */
-	
-	height: 400px;
+
+	height: 200px;
 	overflow-x: hidden;
 }
 
@@ -23,10 +23,10 @@ section { padding: 5px;}
 ::-webkit-scrollbar-track { -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3); }
 ::-webkit-scrollbar-thumb, ::-webkit-scrollbar-thumb:window-inactive  { background: red; }
 
-.untab{
+/* .untab{
 	padding: 5px;
 	margin : 5px;
-}
+} */
 
 #response{
 	/*color : #16a085 ;*/
@@ -41,7 +41,7 @@ section { padding: 5px;}
 	text-align: center;
 	padding: 9px;
 	font-weight: bold;
-	font-size: 20px;
+	/* font-size: 20px; */
 }
 
 .truncate {
@@ -57,6 +57,8 @@ section { padding: 5px;}
 }
 
 .date-style{
-	font-size: 11px;
+	position: relative;
+	top:15px;
 	font-style: italic;
+	font-size: 10px;
 }

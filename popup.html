@@ -13,6 +13,13 @@
 		<link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
 		<link href="css/custom.css" rel="stylesheet" media="screen">
 
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons">
+		<link rel="stylesheet" href="https://unpkg.com/bootstrap-material-design@4.1.1/dist/css/bootstrap-material-design.min.css" integrity="sha384-wXznGJNEXNG1NFsbm0ugrLFMQPWswR3lds2VeinahP8N0zJw9VWSopbjv2x7WCvX" crossorigin="anonymous">
+
+		<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+		<script src="https://unpkg.com/popper.js@1.12.6/dist/umd/popper.js" integrity="sha384-fA23ZRQ3G/J53mElWqVJEGJzU0sTs+SvzG8fXVWP+kJQ1lwFAOkcUOysnlKJC33U" crossorigin="anonymous"></script>
+		<script src="https://unpkg.com/bootstrap-material-design@4.1.1/dist/js/bootstrap-material-design.js" integrity="sha384-CauSuKpEqAFajSpkdjv3z9t8E7RlpJ1UP0lKM/+NdtSarroVKu069AlsRPKkFBz9" crossorigin="anonymous"></script>
+
 		<script src="popup.js"></script>
 	</head>
 
@@ -21,41 +28,38 @@
 
 		<ul class="nav nav-tabs">
 		  <li class="active">
-				<a id="return_home" data-toggle="tab" href="#home"><span class="glyphicon glyphicon-file"> </span> Untab </a>
+				<a id="return_home" data-toggle="tab" href="#home"><span class="glyphicon glyphicon-file"> </span> Save tabs under a title </a>
 		  </li>
 		  <li id="view_untabs" >
-			<a data-toggle="tab" href="#menu1"> <span class="glyphicon glyphicon-link"> </span> Untabbed
+			<a data-toggle="tab" href="#menu1"> <span class="glyphicon glyphicon-link"> </span> View saved tabs
 				<span class="badge" ><span id="badge" /></span>
 			</a>
 		  </li>
-
 		  <li id="import_export">
 			<a data-toggle="tab" href="#importexport">
 				<span class="glyphicon glyphicon-save"> </span> Import / Export
 			</a>
 		  </li>
-		<!--   <li id="view_history"><a data-toggle="tab" href="#menu2"><span class="glyphicon glyphicon-th-list"> </span> History</a></li> -->
-
 		</ul>
 
 		<div class="tab-content">
 		  <div id="home" class="tab-pane  active">
-			<section id="home-section">
-				<form  name="searchForm">
-					<div>
-						<input class="form-control" type="text"  id="search_query" placeholder="Add tag name to Untab the links" autocomplete="off">
-						<br>
-						<div class="row">
-							<div class="response-info alert">
-							  	<strong id="response"> </strong>
+					<section id="home-section">
+						<form  name="searchForm">
+							<div>
+								<input class="form-control" type="text"  id="search_query" placeholder="What would you like to name these open tags?" autocomplete="off">
+								<br>
+								<div class="row">
+									<div class="response-info alert">
+									  	<strong id="response"> </strong>
+									</div>
+								</div>
+								<button id="save_links" class="pull-right btn btn-primary"> Save </button>
+								<br>
 							</div>
-						</div>
-						<button id="save_links" class="pull-right btn btn-primary"> Save </button>
-						<br>
-					</div>
-				</form>
+						</form>
 
-			</section>
+					</section>
 		  </div>
 
 		  <div id="menu1" class="tab-pane ">
@@ -66,38 +70,20 @@
 
 		  <div id="importexport" class="tab-pane ">
 		  	<section id="impexp-section">
-		  		<br>
-
-		  		<div class="row">
-		  			<div class="col-xs-6">
-		  				<button id="import" class=" form-control btn btn-info">
-							<span class="glyphicon glyphicon-import"> </span>
-		  					Import from a JSON file
-		  				</button>
-		  			</div>
-		  		</div>
-
-		  		<br>
-
-		  		<div class="row">
-		  			<div class="col-xs-6">
-		  				<button id="export" class="form-control btn btn-info">
-		  					<span class="glyphicon glyphicon-export"> </span>
-		  					Export as JSON file
-		  				</button>
-		  			</div>
-		  		</div>
-
-		  		<br>
-
+					<button id="import" class="btn btn-outline-success">
+					<span class="glyphicon glyphicon-import"> </span>
+						Import from a JSON file
+					</button>
+					<button id="export" class="btn btn-outline-success">
+						<span class="glyphicon glyphicon-export"> </span>
+						Export as JSON file
+					</button>
 		  		<div class="row">
 		  			<div class="export-info alert">
 		  			  	<strong id="export_info_text"> </strong>
 		  			</div>
 		  		</div>
-
 		  		</div>
-
 		  	</section>
 		  </div>
 
