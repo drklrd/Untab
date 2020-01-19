@@ -124,8 +124,8 @@ document.addEventListener('DOMContentLoaded', () => {
 									 <h4 class="panel-title">'
 
 
-					html = html + "<div  id='tablayer_id" + link + "' class='row untab'>" + link + '<br>' + '<span class="date-style">' + 'saved ' + moment(result.links[link].createdAt).fromNow() + '<span>';
-					html = html + "<div class='pull-right' > <button class='btn btn-outline-success' id='untab_id" + link + "' > Untab </button>  <a data-toggle='collapse' href='#collapse"+index+"'> <button class='btn btn-warning' > <span class='glyphicon glyphicon-eye-open'> </span> </button> </a> <button class='btn btn-danger' id='delete_id" + link + "' > <span class='glyphicon glyphicon-remove'> </span> </button>  </div>  </div>";
+					html = html + "<div  id='tablayer_id" + link + "' class='row untab'>" + link + '<br>' + '<span class="date-style">' + 'saved ' + moment(result.links[link].createdAt).fromNow() + '</span> <br>';
+					html = html + "<div class='pull-right' > <button class='btn btn-outline-success open-sesame' id='untab_id" + link + "' > Untab </button>  <a data-toggle='collapse' href='#collapse"+index+"'> <button class='btn btn-warning' > <span class='glyphicon glyphicon-eye-open'> </span> </button> </a> <button class='btn btn-danger' id='delete_id" + link + "' > <span class='glyphicon glyphicon-remove'> </span> </button>  </div>  </div>";
 					html = html + '</h4></div>';
 					html = html + 	'<div id="collapse'+index+'" class="panel-collapse collapse">\
 								      <div class="panel-body">'+getIndividualUntabs(result.links,link)+'</div>\

@@ -6,7 +6,7 @@
 
 body, section {			/* Change width and height to own preferences */
 
-	height: 200px;
+	height: 400px;
 	overflow-x: hidden;
 }
 
@@ -61,4 +61,8 @@ section { padding: 5px;}
 	top:15px;
 	font-style: italic;
 	font-size: 10px;
+}
+
+.open-sesame{
+	margin: 10px;
 }
